@@ -1,52 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Registration Form</title>
-        <meta charset="utf-8">
-        <link href="form.css" rel="stylesheet">
-        
-    </head>
-    <body>
-        <script src="validations.js"></script>
-        <h4>Registration Form</h4>
-        <form method="get">
-            <label for="fname">First Name:</label><br>
-            <input type="text" id="fname" name="fname" placeholder="Enter your first name"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="lname">Last Name:</label><br>
-            <input type="text" id="lname" name="lname" placeholder="Enter your last name"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="uname">Email:</label><br>
-            <input type="email" id="uname" name="uname" placeholder="Enter your Email"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="mobile">Mobile:</label><br>
-            <input type="tel" id="mobile" name="mobile" minlength="9" maxlength="10"  placeholder="only 10 digits are allowed"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="gen">Gender:</label><br>
-            <input type="radio" id="gen" name="gen">
-            <label for="gen">Male</label>
-            <input type="radio" id="gen" name="gen">
-            <label for="gen">Female</label><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="city">City:</label><br>
-            <input type="text" id="city" name="city"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="state">State:</label><br>
-            <input type="text" id="state" name="state"><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <label for="qualify">Qualification:</label><br>
-            <select id="qualify" name="qualify"><br>
-                <option value="select" disabled selected>Select Qualification</option>
-                <option value="graduation">Graduation</option>
-                <option value="btech">BTech</option>
-                <option value="mtech">MTech</option>
-                <option value="mca">MCA</option>
-                <option value="bca">BCA</option>
-            </select><br>
-            <label for="pwd">Password:</label><br>
-            <input type="password" id="pwd" name="pwd"><br><br>
-            <!--Empty span/div to show "Error" for empty or invalid entry or "Correct" for accurate input after submit is hit -->
-            <button type="submit">Register</button>
-        </form>
-    </body>
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="utf-8">
+    <link href="form.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <h4>Registration Form</h4>
+    <form method="get">
+
+        <label for="fname">First Name:</label><br>
+        <input type="text" id="fname" name="fname" placeholder="Enter your first name"><br>
+        <div id="fNameVal"></div><br>
+
+        <label for="lname">Last Name:</label><br>
+        <input type="text" id="lname" name="lname" placeholder="Enter your last name"><br>
+        <div id="lNameVal"></div><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your Email"><br>
+        <div id="emailVal"></div><br>
+
+        <label for="mobile">Mobile:</label><br>
+        <input type="tel" id="mobile" name="mobile" minlength="10" maxlength="10" pattern="\d{10}"
+            placeholder="Only 10 digits are allowed"><br>
+        <div id="mobileVal"></div><br>
+
+        <div>Gender:</div>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        <div id="genderVal"></div><br>
+
+        <label for="city">City:</label><br>
+        <input type="text" id="city" name="city"><br>
+        <div id="cityVal"></div><br>
+
+        <label for="state">State:</label><br>
+        <input type="text" id="state" name="state"><br>
+        <div id="stateVal"></div><br>
+
+        <label for="qualify">Qualification:</label><br>
+        <select id="qualify" name="qualify"><br>
+            <option value="" disabled selected>Select Qualification</option>
+            <option value="graduation">Graduation</option>
+            <option value="btech">BTech</option>
+            <option value="mtech">MTech</option>
+            <option value="mca">MCA</option>
+            <option value="bca">BCA</option>
+        </select><br>
+        <div id="qualifyVal"></div><br>
+
+        <label for="pwd">Password:</label><br>
+        <input type="password" id="pwd" name="pwd"><br>
+        <div id="passVal"></div><br><br>
+
+        <button type="button" onclick="formVal()">Register</button>
+    </form>
+    <script src="validations.js"></script>
+</body>
+
 </html>

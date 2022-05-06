@@ -1,6 +1,7 @@
 var notReady = false;
 
 function formVal() {
+    notReady = false;
     checkFirstName();
     checkLastName();
     checkEmail();

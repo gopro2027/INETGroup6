@@ -13,99 +13,76 @@ function formVal() {
     checkQual();
 
     //Fee free to rename this
-    phpTime();
+    submitForm();
 }
+
+//rick worked on validation!
 
 function checkFirstName() {
     var pattern = /^[a-zA-Z'.\-\s]{1,30}$/;
-    if (pattern.test(document.getElementById('fname').value)) {
-        document.getElementById("fNameVal").innerHTML = "<span style='color:green'>Correct</span>";
-    } else {
-        document.getElementById("fNameVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    }
+    setElementErrorOrCorrect(document.getElementById("fNameVal"),pattern.test(document.getElementById('fname').value));
 }
 
 function checkLastName() {
     var pattern = /^[a-zA-Z'.\-\s]{1,30}$/;
-    if (pattern.test(document.getElementById('lname').value)) {
-        document.getElementById("lNameVal").innerHTML = "<span style='color:green'>Correct</span>";
-    } else {
-        document.getElementById("lNameVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    }
+    setElementErrorOrCorrect(document.getElementById("lNameVal"),pattern.test(document.getElementById('lname').value));
 }
 
 function checkEmail() {
     var pattern = /^[a-z0-9\-_\.']+@[a-z0-9]+\.[a-z0-9]+$/
-    if (pattern.test(document.getElementById('email').value)) {
-        document.getElementById("emailVal").innerHTML = "<span style='color:green'>Correct</span>";
-    } else {
-        document.getElementById("emailVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    }
+    setElementErrorOrCorrect(document.getElementById("emailVal"),pattern.test(document.getElementById('email').value));
 }
 
 function checkPassword() {
     var pattern = /^(?=.{3,10}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/
-    if (pattern.test(document.getElementById('pwd').value)) {
-        document.getElementById("passVal").innerHTML = "<span style='color:green'>Correct</span>";
-    } else {
-        document.getElementById("passVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    }
+    setElementErrorOrCorrect(document.getElementById("passVal"),pattern.test(document.getElementById('pwd').value));
 }
 
 function checkMobile() {
-    if (document.getElementById("mobile").value.length == 0) {
-        document.getElementById("mobileVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    } else {
-        document.getElementById("mobileVal").innerHTML = "<span style='color:green'>Correct</span>";
-    }
+    setElementErrorOrCorrect(document.getElementById("mobileVal"),document.getElementById("mobile").value.length != 0);
 }
 
 function checkGender() {
-    if (document.querySelector("input[name = 'gender']:checked") != null) {
-        document.getElementById("genderVal").innerHTML = "<span style='color:green'>Correct</span>";
-    } else {
-        document.getElementById("genderVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    }
+    setElementErrorOrCorrect(document.getElementById("genderVal"),document.querySelector("input[name = 'gender']:checked") != null);
 }
 
 function checkCity() {
-    if (document.getElementById("city").value.length == 0) {
-        document.getElementById("cityVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    } else {
-        document.getElementById("cityVal").innerHTML = "<span style='color:green'>Correct</span>";
-    }
+    setElementErrorOrCorrect(document.getElementById("cityVal"), document.getElementById("city").value.length != 0);
 }
 
 function checkState() {
-    if (document.getElementById("state").value.length == 0) {
-        document.getElementById("stateVal").innerHTML = "<span style='color:red'>Error</span>";
-        notReady = true;
-    } else {
-        document.getElementById("stateVal").innerHTML = "<span style='color:green'>Correct</span>";
-    }
+    setElementErrorOrCorrect(document.getElementById("stateVal"), document.getElementById("state").value.length != 0);
 }
 
 function checkQual() {
-    if (document.getElementById("qualify").value) {
-        document.getElementById("qualifyVal").innerHTML = "<span style='color:green'>Correct</span>";
+    setElementErrorOrCorrect(document.getElementById("qualifyVal"),document.getElementById("qualify").value);
+}
+
+function setElementErrorOrCorrect(elem, valid) {
+    if (valid) {
+        elem.innerHTML = "<span style='color:green'>Correct</span>";
     } else {
-        document.getElementById("qualifyVal").innerHTML = "<span style='color:red'>Error</span>";
+        elem.innerHTML = "<span style='color:red'>Error</span>";
         notReady = true;
     }
 }
 
 //Change this when ready
-function phpTime() {
+function submitForm() {
     if (notReady) {
-        alert("'NONE SHALL PASS' -BlackKnight")
+        alert("Not ready!");
     } else {
-        alert("Ready to go, captain")
+        var form = $('#userForm');
+        var actionUrl = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: actionUrl,
+            data: form.serialize(),
+            success: function(data)
+            {
+                alert(data);
+            }
+        });
     }
 }

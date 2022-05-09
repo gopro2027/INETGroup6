@@ -10,6 +10,9 @@ $gender = $_POST['gender'];
 $city = $_POST['city'];
 $state = $_POST['state'];
 $qual = $_POST['qualify'];
+
+//TODO: add validation here!
+
 $success = addUser($firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual);
 if ($success === TRUE) {
     die("User Successfully Added");

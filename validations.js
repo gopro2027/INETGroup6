@@ -20,42 +20,60 @@ function formVal() {
 
 function checkFirstName() {
     var pattern = /^[a-zA-Z'.\-\s]{1,30}$/;
-    setElementErrorOrCorrect(document.getElementById("fNameVal"),pattern.test(document.getElementById('fname').value));
+    val = document.getElementById('fname').value;
+    elem = document.getElementById("fNameVal");
+    setElementErrorOrCorrect(elem,pattern.test(val));
 }
 
 function checkLastName() {
     var pattern = /^[a-zA-Z'.\-\s]{1,30}$/;
-    setElementErrorOrCorrect(document.getElementById("lNameVal"),pattern.test(document.getElementById('lname').value));
+    val = document.getElementById('lname').value;
+    elem = document.getElementById("lNameVal");
+    setElementErrorOrCorrect(elem,pattern.test(val));
 }
 
 function checkEmail() {
     var pattern = /^[a-z0-9\-_\.']+@[a-z0-9]+\.[a-z0-9]+$/
-    setElementErrorOrCorrect(document.getElementById("emailVal"),pattern.test(document.getElementById('email').value));
+    val = document.getElementById('email').value;
+    elem = document.getElementById("emailVal");
+    setElementErrorOrCorrect(elem,pattern.test(val));
 }
 
 function checkPassword() {
     var pattern = /^(?=.{3,10}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/
-    setElementErrorOrCorrect(document.getElementById("passVal"),pattern.test(document.getElementById('pwd').value));
+    val = document.getElementById('pwd').value;
+    elem = document.getElementById("passVal");
+    setElementErrorOrCorrect(elem,pattern.test(val));
 }
 
 function checkMobile() {
-    setElementErrorOrCorrect(document.getElementById("mobileVal"),document.getElementById("mobile").value.length != 0);
+    val = document.getElementById("mobile").value;
+    elem = document.getElementById("mobileVal");
+    setElementErrorOrCorrect(elem,val.length != 0);
 }
 
 function checkGender() {
-    setElementErrorOrCorrect(document.getElementById("genderVal"),document.querySelector("input[name = 'gender']:checked") != null);
+    val = document.querySelector("input[name = 'gender']:checked");
+    elem = document.getElementById("genderVal");
+    setElementErrorOrCorrect(elem,val != null);
 }
 
 function checkCity() {
-    setElementErrorOrCorrect(document.getElementById("cityVal"), document.getElementById("city").value.length != 0);
+    val = document.getElementById("city").value;
+    elem = document.getElementById("cityVal");
+    setElementErrorOrCorrect(elem, val.length != 0);
 }
 
 function checkState() {
-    setElementErrorOrCorrect(document.getElementById("stateVal"), document.getElementById("state").value.length != 0);
+    val = document.getElementById("state").value;
+    elem = document.getElementById("stateVal");
+    setElementErrorOrCorrect(elem, val.length != 0);
 }
 
 function checkQual() {
-    setElementErrorOrCorrect(document.getElementById("qualifyVal"),document.getElementById("qualify").value);
+    val = document.getElementById("qualify").value;
+    elem = document.getElementById("qualifyVal");
+    setElementErrorOrCorrect(elem,val);
 }
 
 function setElementErrorOrCorrect(elem, valid) {

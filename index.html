@@ -6,10 +6,8 @@
     <meta charset="utf-8">
     <link href="form.css" rel="stylesheet">
 
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -31,7 +29,7 @@
         <div id="emailVal"></div><br>
 
         <label for="mobile">Mobile:</label><br>
-        <input type="tel" id="mobile" name="mobile" minlength="10" maxlength="10" pattern="\d{10}"
+        <input type="tel" id="mobile" name="mobile" minlength="9" maxlength="10" pattern="\d{9, 10}"
             placeholder="Only 10 digits are allowed"><br>
         <div id="mobileVal"></div><br>
 
@@ -52,7 +50,7 @@
 
         <label for="qualify">Qualification:</label><br>
         <select id="qualify" name="qualify"><br>
-            <option value="" disabled selected>Select Qualification</option>
+            <option value="" selected>Select Qualification</option>
             <option value="graduation">Graduation</option>
             <option value="btech">BTech</option>
             <option value="mtech">MTech</option>

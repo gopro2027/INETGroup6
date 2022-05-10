@@ -101,6 +101,15 @@ function checkState(){
     }
 }
 
+function checkQual(){
+    if ($qual.value){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 $success = addUser($firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual);
 if ($success === TRUE) {
     die("User Successfully Added");

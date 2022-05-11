@@ -7,25 +7,35 @@ $email = $_POST['email'];
 $password = $_POST['pwd'];
 $phonenumber = $_POST['mobile'];
 $gender = $_POST['gender'];
-$city = $_POST['city'];
+$city = $_POST['city']; 
 $state = $_POST['state'];
 $qual = $_POST['qualify'];
 
-function formVal(){
-    checkFirstName();
-    checkLastName();
-    checkEmail();
-    checkPassword();
-    checkMobile();
-    checkGender();
-    checkCity();
-    checkState();
+function validate(){
+    global $firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual;
+    $validated = true;
+    $validated = $validated and checkFirstName();
+    $validated = $validated and checkLastName();
+    $validated = $validated and checkEmail();
+    $validated = $validated and checkPassword();
+    $validated = $validated and checkMobile();
+    $validated = $validated and checkGender();
+    $validated = $validated and checkCity();
+    $validated = $validated and checkState();
 
-    addUser();
+    if ($validated == true) {
+        $success = addUser($firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual);
+        if ($success === TRUE) {
+            die("User Successfully Added");
+        } else {
+            die("User was not added!");
+        }
+    }
 }
 
 //TODO: add validation here!
 function checkFirstName(){
+    global $firstname;
     $pattern = "/^[a-zA-Z'.\-\s]{1,30}$/";
     if (!preg_match($pattern, $firstname)){
         return false;
@@ -36,6 +46,7 @@ function checkFirstName(){
 }
 
 function checkLastName(){
+    global $lastname;
     $pattern = "/^[a-zA-Z'.\-\s]{1,30}$/";
     if (!preg_match($pattern, $lastname)){
         return false;
@@ -46,6 +57,7 @@ function checkLastName(){
 }
 
 function checkEmail(){
+    global $email;
     $pattern = "/^[a-z0-9\-_\.']+@[a-z0-9]+(\.[a-z0-9]+){0,2}$/";
     if (!preg_match($pattern, $email)){
         return false;
@@ -56,6 +68,7 @@ function checkEmail(){
 }
 
 function checkPassword(){
+    global $password;
     $pattern = "/^(?=.{3,10}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*$/";
     if (!preg_match($pattern, $password)){
         return false;
@@ -66,7 +79,8 @@ function checkPassword(){
 }
 
 function checkMobile(){
-    if ($phonenumber.length != 0){
+    global $phonenumber;
+    if (strlen($phonenumber) != 0){
         return true;
     }
     else {
@@ -75,7 +89,8 @@ function checkMobile(){
 }
 
 function checkGender(){
-    if ($gender != null){
+    global $gender;
+    if (strlen($gender) != 0){
         return true;
     }
     else{
@@ -84,7 +99,8 @@ function checkGender(){
 }
 
 function checkCity(){
-    if ($city.length != 0){
+    global $city;
+    if (strlen($city) != 0){
         return true;
     }
     else{
@@ -93,7 +109,8 @@ function checkCity(){
 }
 
 function checkState(){
-    if ($state.length != 0){
+    global $state;
+    if (strlen($state) != 0){
         return true;
     }
     else{
@@ -102,7 +119,8 @@ function checkState(){
 }
 
 function checkQual(){
-    if ($qual.value){
+    global $qual;
+    if (strlen($qual) != 0){
         return true;
     }
     else{
@@ -110,11 +128,6 @@ function checkQual(){
     }
 }
 
-$success = addUser($firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual);
-if ($success === TRUE) {
-    die("User Successfully Added");
-} else {
-    die("User was not added!");
-}
+validate();
 
 ?>

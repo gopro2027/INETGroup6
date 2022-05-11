@@ -73,7 +73,7 @@ function checkState() {
 function checkQual() {
     val = document.getElementById("qualify").value;
     elem = document.getElementById("qualifyVal");
-    setElementErrorOrCorrect(elem, val);
+    setElementErrorOrCorrect(elem, val.length != 0);
 }
 
 function setElementErrorOrCorrect(elem, valid) {

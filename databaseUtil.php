@@ -29,7 +29,7 @@ $query = "CREATE TABLE IF NOT EXISTS USERS (
   LNAME varchar(255) NOT NULL,
   EMAIL varchar(255) NOT NULL,
   PASS varchar(255) NOT NULL,
-  PHONENUMBER int(20) NOT NULL,
+  PHONENUMBER int(20) NOT NULL, #should be varchar
   GENDER varchar(255) NOT NULL,
   CITY varchar(255) NOT NULL,
   STATE varchar(255) NOT NULL,

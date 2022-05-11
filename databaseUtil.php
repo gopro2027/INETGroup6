@@ -47,8 +47,17 @@ if ($result === TRUE) {
 
 function addUser($firstname, $lastname, $email, $password, $phonenumber, $gender, $city, $state, $qual) {
   global $conn;
+  $firstname = mysqli_real_escape_string($conn, $firstname);
+  $lastname = mysqli_real_escape_string($conn, $lastname);
+  $email = mysqli_real_escape_string($conn, $email);
+  $password = mysqli_real_escape_string($conn, $password);
+  $phonenumber = mysqli_real_escape_string($conn, $phonenumber);
+  $gender = mysqli_real_escape_string($conn, $gender);
+  $city = mysqli_real_escape_string($conn, $city);
+  $state = mysqli_real_escape_string($conn, $state);
+  $qual = mysqli_real_escape_string($conn, $qual);
   $sql = "INSERT INTO USERS (FNAME, LNAME, EMAIL, PASS, PHONENUMBER, GENDER, CITY, STATE, QUAL) VALUES ('$firstname', '$lastname', '$email', '$password', '$phonenumber', '$gender', '$city', '$state', '$qual')";
   return $conn->query($sql);
 }
 
-//addUser("sgf","gsd","sdg@gmail.com","yxYr5sc","7389423456","MALE","sjdf","fgsdf","BA");
+//addUser("sgf","gsd","sd'g@gmail.com","yxYr5sc","7389423456","MALE","sjdf","fgsdf","BA");

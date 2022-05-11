@@ -33,7 +33,6 @@ function validate(){
     }
 }
 
-//TODO: add validation here!
 function checkFirstName(){
     global $firstname;
     $pattern = "/^[a-zA-Z'.\-\s]{1,30}$/";
